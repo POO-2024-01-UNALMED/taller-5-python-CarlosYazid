@@ -34,11 +34,7 @@ class Animal:
     from zooAnimales.reptil import Reptil
     from zooAnimales.ave import Ave
     from zooAnimales.anfibio import Anfibio
-    return f"""Mamiferos: {Mamifero.Total_Animales()}\n
-                Aves:  {Ave.Total_Animales()} \n
-                Reptiles: {Reptil.Total_Animales()}\n
-                Peces: {Pez.Total_Animales()}\n
-                Anfibios: {Anfibio.Total_Animales()}"""
+    return f"""Mamiferos : {Mamifero.get_total_animales()}\nAves : {Ave.get_total_animales()}\nReptiles : {Reptil.get_total_animales()}\nPeces : {Pez.get_total_animales()}\nAnfibios : {Anfibio.get_total_animales()}"""
 
   # Metodos de Instancia
 

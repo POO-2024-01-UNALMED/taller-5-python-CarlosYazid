@@ -24,7 +24,7 @@ from gestion.zoologico import Zoologico
 
 class Zona:
     
-  def __init__(self, nombre : str | None = None,zoologico : Zoologico = Zoologico(None,None),animales : list | None = None):
+  def __init__(self, nombre : str | None = None,zoologico : Zoologico | None = None,animales : list | None = None):
     self._nombre = nombre
     self._animales = animales if animales is not None else []
     self._zoologico = zoologico
