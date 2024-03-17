@@ -4,9 +4,9 @@ class Reptil(animal.Animal):
     
     # Atributos de clase
     
-    __Iguanas : int = 0
-    __Serpientes : int = 0
-    __Listado : list = []
+    iguanas : int = 0
+    serpientes : int = 0
+    listado : list = []
     
     # Constructor
     
@@ -14,7 +14,7 @@ class Reptil(animal.Animal):
         super().__init__(nombre, edad, habitat, genero)
         self._color_escams = color_escamas
         self._largo_cola = largo_cola
-        Reptil.__Listado.append(self)
+        Reptil.listado.append(self)
     
     # Metodos de Instancia
     
@@ -25,52 +25,42 @@ class Reptil(animal.Animal):
     
     @classmethod
     def crearIguana(cls, nombre : str, edad : int, genero : str):
-        cls.__Iguanas += 1
+        cls.iguanas += 1
         nueva_Iguana = Reptil(nombre, edad, "humedal",genero,"verde",3)
         return nueva_Iguana
     
     @classmethod
     def crearSerpiente(cls, nombre : str, edad : int, genero : str):
-        cls.__Serpientes += 1
+        cls.serpientes += 1
         nueva_Serpiente = Reptil(nombre, edad, "jungla",genero,"blanco",1)
         return nueva_Serpiente
 
     # Getters y Setters
     
-    @property
-    def color_escamas(self) -> str:
+    def getColorEscamas(self) -> str:
         return self._color_escams
     
-    @color_escamas.setter
-    def color_escamas(self, color_escams: str) -> None:
+    def setColorEscamas(self, color_escams: str) -> None:
         self._color_escams = color_escams
     
-    @color_escamas.deleter
-    def color_escamas(self) -> None:
-        del self._color_escams
-    
-    @property
-    def largo_cola(self) -> int:
+    def getLargoCola(self) -> int:
         return self._largo_cola
     
-    @largo_cola.setter
-    def largo_cola(self, largo_cola: int) -> None:
+    def setLargoCola(self, largo_cola: int) -> None:
         self._largo_cola = largo_cola
-    
-    @largo_cola.deleter
-    def largo_cola(self) -> None:
-        del self._largo_cola
     
     @classmethod
     def get_total_iguanas(cls) -> int:
-        return cls.__Iguanas
+        return cls.iguanas
     
     @classmethod
     def get_total_serpientes(cls) -> int:
-        return cls.__Serpientes
+        return cls.serpientes
     
     @classmethod
     def get_total_animales(cls) -> int:
-        return len(cls.__Listados)
+        return len(cls.listado)
     
     pass
+
+# Anti - copy : Carlos Yazid Padilla

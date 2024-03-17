@@ -4,9 +4,9 @@ class Anfibio(animal.Animal):
     
     # Atributos de clase
     
-    __Ranas : int = 0
-    __Salamandras : int = 0
-    __Listado : list = []
+    ranas : int = 0
+    salamandras : int = 0
+    listado : list = []
     
     # Constructor
     
@@ -14,7 +14,7 @@ class Anfibio(animal.Animal):
         super().__init__(nombre, edad, habitat, genero)
         self._color_piel = color_piel
         self._venenoso = venenoso
-        Anfibio.__Listado.append(self)
+        Anfibio.listado.append(self)
     
     # Metodos de Instancia
     
@@ -25,49 +25,42 @@ class Anfibio(animal.Animal):
     
     @classmethod
     def crearRana(cls, nombre : str, edad : int, genero : str):
-        cls.__Ranas += 1
+        cls.ranas += 1
         nueva_Rana = Anfibio(nombre, edad, "selva",genero,"rojo",True)
         return nueva_Rana
     
     @classmethod
     def crearSalamandra(cls, nombre : str, edad : int, genero : str):
-        cls.__Salamandras += 1
+        cls.salamandras += 1
         nueva_Salamandra = Anfibio(nombre, edad, "selva",genero,"negro y amarillo",False)
         return nueva_Salamandra
 
     # Getters y Setters
     
-    @property
-    def color_piel(self) -> str:
+    def getColorPiel(self) -> str | None:
         return self._color_piel
     
-    @color_piel.setter
-    def color_piel(self, color_piel: str) -> None:
+    def setColorPiel(self, color_piel: str) -> None:
         self._color_piel = color_piel
     
-    @color_piel.deleter
-    def color_piel(self) -> None:
-        del self._color_piel
-    
-    @property
-    def venenoso(self) -> int:
+    def isVenenoso(self) -> bool | None:
         return self._venenoso
     
-    @venenoso.setter
-    def venenoso(self, venenoso: bool) -> None:
+    def setVenenoso(self, venenoso: bool) -> None:
         self._venenoso = venenoso
 
-    
     @classmethod
     def get_total_rana(cls) -> int:
-        return cls.__Ranas
+        return cls.ranas
     
     @classmethod
     def get_total_salamandra(cls) -> int:
-        return cls.__Salamandras
+        return cls.salamandras
     
     @classmethod
     def get_total_animales(cls) -> int:
-        return len(cls.__Listado)
+        return len(cls.listado)
     
     pass
+
+# Anti - copy : Carlos Yazid Padilla

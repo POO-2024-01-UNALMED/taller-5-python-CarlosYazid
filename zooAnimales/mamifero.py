@@ -4,9 +4,9 @@ class Mamifero(animal.Animal):
     
     # Atributos de clase
     
-    Caballos : int = 0
-    Leones : int = 0
-    Listado : list = []
+    caballos : int = 0
+    leones : int = 0
+    listado : list = []
     
     # Constructor
     
@@ -14,58 +14,48 @@ class Mamifero(animal.Animal):
         super().__init__(nombre, edad, habitat, genero)
         self._pelaje = pelaje
         self._patas = patas
-        Mamifero.Listado.append(self)
+        Mamifero.listado.append(self)
     
     # Metodos de clase
     
     @classmethod
     def crearCaballo(cls, nombre : str, edad : int, genero : str):
-        cls.Caballos += 1
+        cls.caballos += 1
         nuevo_Caballo = Mamifero(nombre, edad, "pradera",genero,True,4)
         return nuevo_Caballo
     
     @classmethod
     def crearLeon(cls, nombre : str, edad : int, genero : str):
-        cls.Leones += 1
+        cls.leones += 1
         nuevo_Leon = Mamifero(nombre, edad, "selva",genero,True,4)
         return nuevo_Leon
 
     # Getters y Setters
     
-    @property
-    def pelaje(self) -> bool:
+    def isPelaje(self) -> bool:
         return self._pelaje
     
-    @pelaje.setter
-    def pelaje(self, pelaje: bool) -> None:
+    def setPelaje(self, pelaje: bool) -> None:
         self._pelaje = pelaje
     
-    @pelaje.deleter
-    def pelaje(self) -> None:
-        del self._pelaje
-    
-    @property
-    def patas(self) -> int:
+    def getPatas(self) -> int:
         return self._patas
     
-    @patas.setter
-    def patas(self, patas: int) -> None:
+    def setPatas(self, patas: int) -> None:
         self._patas = patas
-    
-    @patas.deleter
-    def patas(self) -> None:
-        del self._patas
     
     @classmethod
     def get_total_caballo(cls) -> int:
-        return cls._Caballos
+        return cls.caballos
     
     @classmethod
     def get_total_leon(cls) -> int:
-        return cls._Leones
+        return cls.leones
     
     @classmethod
     def get_total_animales(cls) -> int:
-        return len(cls._Listado)
+        return len(cls.listado)
     
     pass
+
+# Anti - copy : Carlos Yazid Padilla

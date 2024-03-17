@@ -1,50 +1,55 @@
-import sys
-import os
-
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.dirname(SCRIPT_DIR))
-
+from typing import Any
 from zooAnimales.animal import Animal
+from gestion.zoologico import Zoologico
+
+
+"""
+    Taller 5 Python
+
+    Realizado el 16 de marzo del 2024
+    Desarrollado por Carlos Yazid Padilla
+    Topico: Herencia
+
+    Dependencias: 
+    
+        - gestion > zona
+        - gestion > zoologico
+        - zooAnimales > Anfibio
+        - zooAnimales > Animal
+        - zooAnimales > Ave
+        - zooAnimales > Mamifero
+        - zooAnimales > Pez
+        - zooAnimales > Reptil
+ """   
 
 class Zona:
     
-    def __init__(self, nombre : str | None = None, animales : list[Animal] = [], zoologico : any = None):
-        self._nombre = nombre
-        self._animales = animales
-        self._zoologico = zoologico
+  def __init__(self, nombre : str | None = None,zoologico : Zoologico = Zoologico(None,None),animales : list | None = None):
+    self._nombre = nombre
+    self._animales = animales if animales is not None else []
+    self._zoologico = zoologico
     
-    def agregarAnimales(self, animal : Animal):
-        self._animales.append(animal)
-        animal.SetTotal_Animales(animal.Total_Animales()+1)
+  def agregarAnimales(self, animal : Animal):
+    self._animales.append(animal)
     
-    def cantidadAnimales(self):
-        return len(self._animales)
+  def cantidadAnimales(self):
+    return len(self._animales)
     
-    @property
-    def nombre(self) -> str:
-        return self._nombre
+  def getNombre(self) -> str | None:
+    return self._nombre
     
-    @nombre.setter
-    def nombre(self, nombre : str) -> None:
-        self._nombre = nombre
+  def setNombre(self, nombre : str) -> None:
+    self._nombre = nombre
     
-    @nombre.deleter
-    def nombre(self) -> None:
-        del self._nombre
+  def getAnimales(self) -> list:
+    return self._animales
     
-    @property
-    def animales(self) -> list:
-        return self._animales
+  def setAnimales(self, animales : list) -> None:
+    self._animales = animales
     
-    @animales.setter
-    def animales(self, animales : list) -> None:
-        self._animales = animales
-    
-    @animales.deleter
-    def animales(self) -> None:
-        del self._animales
-    
-    @property
-    def zoologico(self) -> any:
-        return self._zoologico
-    pass
+  def getZoo(self):
+    return self._zoologico
+  
+  pass
+
+# Anti - copy : Carlos Yazid Padilla
